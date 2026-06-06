@@ -1,9 +1,10 @@
 import { Alert, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ImageReplace from "../../assets/ChangeImage.jpg"
 import { Ionicons } from '@expo/vector-icons'
 import Toast from 'react-native-toast-message'
 import * as ImagePicker from 'expo-image-picker';
+import { createprofileUser, getprofileUser, updateprofileUser } from '../services/profileservices'
 
 
 const ProfileScreen = () => {
@@ -12,6 +13,12 @@ const ProfileScreen = () => {
   const [saveprofile, setsaveprofile] = useState(false)
   const [EditProfile, setEditProfile] = useState(false)
   const [uploadImage, setuploadImage] = useState(null)
+
+  //usefect for laoding profile;-
+  useEffect(() => {
+   handlegetprofile();
+  }, [])
+  
   
 
   //profileHandleClick:-
@@ -34,17 +41,23 @@ const ProfileScreen = () => {
   }
 
   //handleClick:-
-  const handleCreatedProfile = () => {
+  const handleCreatedProfile = async() => {
     try {
-      if(!createProfile.name || !createProfile.bioDesc){
+      const data = {
+        username: createProfile.name,
+        bioDesc: createProfile.bioDesc,
+        profile_image: uploadImage
+      }
+      const result = await createprofileUser(data);
+      if(!result.success){
         return Toast.show({
           type: "error",
-          text1: "Please filled empty field"
+          text1: result.message
         })
       }
       Toast.show({
         type: "success",
-        text1: "Your Profile Created SuccessFully!"
+        text1: result.message
       })
       setsaveprofile(true);
       setcreate(true);
@@ -52,7 +65,31 @@ const ProfileScreen = () => {
     } catch (error) {
       return Toast.show({
         type: "error",
-        text1: "Fetching error your profile has been not created"
+        text1: error.message
+      })
+    }
+  }
+
+
+
+  //handlegetprofile:-
+  const handlegetprofile = async() => {
+    try {
+      const result = await getprofileUser();
+      if(!result.success){
+        return
+      }
+      setcreateProfile({
+        name: result.profile.username,
+        bioDesc: result.profile.bioDesc
+      });
+      setuploadImage(result.profile.profile_image);
+      setsaveprofile(true);
+      setcreate(true);
+    } catch (error) {
+      return Toast.show({
+        type: 'error',
+        text1: error.message
       })
     }
   }
@@ -65,23 +102,28 @@ const ProfileScreen = () => {
 
 
   //handleUpdate:-
-  const handleUpdateprofile = () => {
+  const handleUpdateprofile = async() => {
     try {
-      if(!EditProfile){
+      const data = {
+        username: createProfile.name, 
+        bioDesc: createProfile.bioDesc
+      };
+      const result = await updateprofileUser(data);
+      if(!result.success){
       return Toast.show({
         type: 'error',
-        text1: "No Update Here"
+        text1: result.message
       })
     }
     Toast.show({
       type: "success",
-      text1: "Update Profile Successfully!"
+      text1: result.message
     })
     setEditProfile(false);
     } catch (error) {
       return Toast.show({
         type: "error",
-        text1: "Failed to Update Profile"
+        text1: error.message
       })
     }
   }

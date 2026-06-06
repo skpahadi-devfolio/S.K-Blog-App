@@ -114,7 +114,7 @@ const CreateBlogScreen = ({ blogs, setblogs }) => {
       <Text style={styles.heading}>Add Blog</Text>
 
       <View style={styles.BlogCard}>
-        <TextInput onChangeText={(title) => handleChange("title", title)} value={createBlog.title} style={styles.title} placeholder='Blog Title:' />
+        <TextInput onChangeText={(title) => handleChange("title", title)} value={createBlog.title} style={styles.title} style={{fontSize: 17, fontWeight: 'bold'}} placeholder='Blog Title:' />
         <TextInput style={styles.title} onChangeText={(blog) => handleChange("blog", blog)} value={createBlog.blog} placeholder='Write your Blog Here...' multiline={true} maxLength={1000} scrollEnabled={true} />
         <Text style={styles.Bloglimit}>{createBlog.blog.length}/1000</Text>
 

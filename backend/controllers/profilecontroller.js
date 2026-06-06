@@ -6,18 +6,19 @@ import { createProfile, getprofile, updateprofile } from "../models/profileModel
 export const createprofile = async(req, res) => {
     try {
         const user_id = req.user.id;
-        const{username, bioDesc} = req.body;
-        if(!username || !bioDesc){
+        const{username, bioDesc, profile_image} = req.body;
+        if(!username || !bioDesc || !profile_image){
             return res.status(400).json({
                 success: false,
                 message: "Please field empty column"
             })
         }
-        const newUserProfile = await createProfile(user_id, username, bioDesc);
+        const newUserProfile = await createProfile(user_id, bioDesc, profile_image, username);
 
         return res.status(200).json({
             success: true, 
-            message: "Your Profile Has Been Created"
+            message: "Your Profile Has Been Created",
+            newUserProfile: newUserProfile.rows[0]
         })
     } catch (error) {
         return res.status(500).json({
@@ -79,7 +80,7 @@ export const getprofilebyuserId = async(req, res) => {
 export const updateprofilebyId = async(req, res) => {
     try {
         const  user_id = req.user.id;
-        const {username, bioDesc} = req.body;
+        const {username, bioDesc, profile_image} = req.body;
 
         if(!username || !bioDesc){
             return res.status(400).json({
@@ -87,7 +88,7 @@ export const updateprofilebyId = async(req, res) => {
                 message: "Please filled empty field"
             })
         }
-        const upadateprofile = await updateprofile(user_id, username, bioDesc);
+        const upadateprofile = await updateprofile(user_id, username, bioDesc, profile_image);
 
         //checking updatprofile:-
         if(upadateprofile.rows.length === 0){

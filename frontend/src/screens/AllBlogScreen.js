@@ -66,6 +66,7 @@ const AllBlogScreen = ({blogs, setblogs}) => {
               <Ionicons name='trash' size={24} color={'black'}/>
             </Pressable>
             </View>
+            <Text style={styles.separartion}></Text>
             <Text>{item.id}</Text>
             <Text>{item.BlogTitle}</Text>
             <Text>{item.BlogContent}</Text>
@@ -113,15 +114,23 @@ const styles = StyleSheet.create({
   },
   BlogCards: {
     position: 'relative',
-    height: 360,
-    width: 340,
+    height: 420,
+    width: 341,
     borderColor: 'black',
-    borderWidth: 0.7,
+    borderWidth: 1,
     margin: 'auto',
     borderRadius: 6,
     paddingLeft: 8,
-    paddingTop: 25,
-    marginBottom: '30%'
+    paddingTop: 40,
+    marginBottom: '30%',
+    backgroundColor: '#fdf4f4'
+  },
+  separartion: {
+    position: 'absolute',
+    backgroundColor: 'purple',
+    width: '102.5%',
+    height: '2%',
+    top: 29
   },
   controlBlog: {
     flexDirection: 'row',
@@ -132,7 +141,7 @@ const styles = StyleSheet.create({
   },
   activitywithblogContent: {
     position: 'absolute',
-    bottom: -50,
+    bottom: 5,
     right: -10,
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -141,5 +150,5 @@ const styles = StyleSheet.create({
   },
   activityicons: {
     textAlign: 'center'
-  }
+  },
 })

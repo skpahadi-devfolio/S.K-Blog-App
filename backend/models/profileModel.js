@@ -3,9 +3,9 @@
 import { pool } from "../config/db.js";
 
 //create profile:-
-export const createProfile = async(user_id, bioDesc, username) => {
+export const createProfile = async(user_id, bioDesc, profile_image, username) => {
     return await pool.query(
-        "INSERT INTO profile(user_id, bioDesc, username) VALUES($1, $2, $3) RETURNING *", [user_id, bioDesc, username]
+        "INSERT INTO profile(user_id, bioDesc, profile_image, username) VALUES($1, $2, $3, $4) RETURNING *", [user_id, bioDesc, profile_image, username]
     );
 };
 
@@ -19,9 +19,9 @@ export const getprofile = async(user_id)=> {
 
 
 //Update profile:-
-export const updateprofile = async(user_id, username, bioDesc) => {
+export const updateprofile = async(user_id, username, bioDesc, profile_image) => {
     return await pool.query(
-        "UPDATE profile SET username = $1, bioDesc = $2 WHERE user_id = $3 RETURNING *",
-        [username, bioDesc, user_id]
+        "UPDATE profile SET username = $1, bioDesc = $2, profile_image = $3 WHERE user_id = $4 RETURNING *",
+        [username, bioDesc, profile_image, user_id]
     )
 }

@@ -13,7 +13,7 @@ export const createprofileUser = async(data) => {
         if(!response.ok){
             return {success: false, message: result.message};
         }
-        return {success: true, message: result.message, result, token: result.token};
+        return {success: true, message: result.message, result, token: result.token, profile: result.newUserProfile};
     } catch (error) {
         return {success: false, message: error.message};
     }
@@ -33,7 +33,7 @@ export const getprofileUser = async() => {
         if(!response.ok){
             return {success: false, message: result.message}
         }
-        return {success: true, message: result.message, result, token: result.token}
+        return {success: true, message: result.message, result, token: result.token, profile: result.profile}
     } catch (error) {
         return {success: false, message: error.message}
     }
@@ -58,7 +58,7 @@ export const updateprofileUser = async(data) => {
         if(!response.ok){
             return {success: false, message: result.message}
         }
-        return {success: true, message: result.message, result, token: result.token}
+        return {success: true, message: result.message, result, token: result.token, profile: result.updateprofile}
     } catch (error) {
         return {success: false, message: error.message}
     }
