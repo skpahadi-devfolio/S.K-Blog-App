@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const createprofileUser = async(data) => {
     try {
         const token = await AsyncStorage.getItem("token");
-        const response = await fetch('http://10.168.187.203:3000/api/createprofile', {method: "POST", headers:{"Content-Type": "application/json", "Authorization": `Bearer ${token}`},
+        const response = await fetch('https://s-k-blog-app.onrender.com/api/createprofile', {method: "POST", headers:{"Content-Type": "application/json", "Authorization": `Bearer ${token}`},
         body: JSON.stringify(data)
     })
         const result = await response.json();
@@ -28,7 +28,7 @@ export const createprofileUser = async(data) => {
 export const getprofileUser = async() => {
     try {
         const token = await AsyncStorage.getItem("token");
-        const response = await fetch(`http://10.168.187.203:3000/api/getprofile`, {method: "GET", headers: {"Authorization": `Bearer ${token}`}})
+        const response = await fetch(`https://s-k-blog-app.onrender.com/api/getprofile`, {method: "GET", headers: {"Authorization": `Bearer ${token}`}})
         const result = await response.json();
         if(!response.ok){
             return {success: false, message: result.message}
@@ -51,7 +51,7 @@ export const getprofileUser = async() => {
 export const updateprofileUser = async(data) => {
     try {
         const token = await AsyncStorage.getItem("token");
-        const response = await fetch(`http://10.168.187.203:3000/api/updateprofile`, {method: "PUT", headers:{"Content-Type": "application/json", "Authorization": `Bearer ${token}`},
+        const response = await fetch(`https://s-k-blog-app.onrender.com/api/updateprofile`, {method: "PUT", headers:{"Content-Type": "application/json", "Authorization": `Bearer ${token}`},
             body: JSON.stringify(data)
         })
         const result = await response.json();

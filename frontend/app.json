@@ -17,14 +17,20 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/SKFavicon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "usesCleartextTraffic": true
+      "usesCleartextTraffic": true,
+      "package": "com.skpahadi.skblogapp"
     },
     "web": {
       "icon": "./assets/SKFavicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2a2a84e1-efde-4e43-96eb-ae9658c735ca"
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 //Signup API Calling:-
 export const SignupUser = async(data)=>{
     try {
-        const response = await fetch('http://10.168.187.203:3000/api/auth/signup', {method: "POST", headers: {
+        const response = await fetch('https://s-k-blog-app.onrender.com/api/auth/signup', {method: "POST", headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
@@ -28,7 +28,7 @@ export const SignupUser = async(data)=>{
 //Login Service Logic:-
 export const loginUser = async(data) => {
     try {
-        const response = await fetch('http://10.168.187.203:3000/api/auth/login', {method: "POST", headers:{
+        const response = await fetch('https://s-k-blog-app.onrender.com/api/auth/login', {method: "POST", headers:{
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
