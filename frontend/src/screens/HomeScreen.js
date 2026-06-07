@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet, Text, View, Animated, ScrollView } from 'react-native'
 import { useRef } from 'react'
 import SKImage from "../../assets/SKHomeLogo.png"
-import { pressInAnimation, pressOutAnimation } from '../animations/buttonAnimation'
+import { pressInAnimation, pressOutAnimation } from '../animations/buttonAnimation.js'
 import { LinearGradient } from 'expo-linear-gradient'
 
 

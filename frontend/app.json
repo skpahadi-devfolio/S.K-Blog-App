@@ -20,11 +20,8 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "usesCleartextTraffic": true,
-      "package": "com.skpahadi.skblogapp"
-    },
-    "experiments": {
-      "newArch": true
+      "package": "com.skpahadi.skblogapp",
+      "newArchEnabled": true
     },
     "web": {
       "icon": "./assets/adaptive-icon.png"
@@ -33,6 +30,9 @@
       "eas": {
         "projectId": "2a2a84e1-efde-4e43-96eb-ae9658c735ca"
       }
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
