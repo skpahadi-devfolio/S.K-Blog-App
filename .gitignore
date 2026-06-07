@@ -48,11 +48,11 @@ coverage/
 Thumbs.db
 
 # =========================
+# =========================
 # Android / iOS
 # =========================
-android/app/build/
-ios/Pods/
-ios/build/
+android/
+ios/
 
 # =========================
 # Misc
