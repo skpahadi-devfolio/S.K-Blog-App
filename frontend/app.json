@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "S.K Blog App",
+    "name": "S.K Blog",
     "slug": "sk-blog-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/SKFavicon.png",
+    "icon": "./assets/adaptive-icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/adaptive-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/SKFavicon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -25,7 +25,7 @@
       "package": "com.skpahadi.skblogapp"
     },
     "web": {
-      "icon": "./assets/SKFavicon.png"
+      "icon": "./assets/adaptive-icon.png"
     },
     "extra": {
       "eas": {
